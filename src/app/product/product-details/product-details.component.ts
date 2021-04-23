@@ -5,6 +5,7 @@ import { State } from 'src/app/state/app.state';
 import { Product } from '../product.model';
 import * as fromProduct from '../state/product.reducer';
 import * as ProductActions from '../state/product.actions';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class ProductDetailsComponent implements OnInit {
 
   currentProduct$: Observable<Product>;
 
-  constructor(private store: Store<State>,) { }
+  constructor(private store: Store<State>, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -32,5 +33,9 @@ export class ProductDetailsComponent implements OnInit {
     } else {
       return;
     }
+  }
+
+  GoToEditProduct(): void {
+    this.router.navigate([{ outlets: { second: 'product/edit' } }]);
   }
 }

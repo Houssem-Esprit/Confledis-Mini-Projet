@@ -1,6 +1,6 @@
 <div class="bg-white sm:px-6 overflow-hidden shadow-lg rounded-lg h-full w-full md:w-full cursor-pointer m-auto"
     *ngIf="currentProduct$ | async as product; else elseBlock">
-    <a href="#" class="w-full block h-full">
+    <a class="w-full block h-full">
         <img alt="blog photo" src="assets/img_placeholder.png" class="max-h-64 w-full pt-4 object-cover" />
         <div class="bg-white dark:bg-gray-800 w-full p-4 mb-4">
             <p class="text-blue-900 text-md font-medium dark:text-yellow-500">
@@ -26,7 +26,8 @@
 
                     <div class="bg-auto bg-center text-xs py-1.5">
                         <button type="button"
-                            class="py-2 px-4 flex justify-center items-center  h-7  bg-green-600 hover:bg-green-700 focus:ring-green-500 focus:ring-offset-gray-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-500 dark:focus:ring-offset-gray-200">
+                            class="py-2 px-4 flex justify-center items-center  h-7  bg-green-600 hover:bg-green-700 focus:ring-green-500 focus:ring-offset-gray-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-500 dark:focus:ring-offset-gray-200"
+                            (click)="GoToEditProduct()">
 
                             <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" class="mr-2" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">

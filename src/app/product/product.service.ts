@@ -24,8 +24,8 @@ export class ProductService {
     return this.httpClient.delete<void>(`${this.baseUrl}/product/delete/${id}`);
   }
 
-  updateProduct$(id: string, updateProductDto: ProductUpdateDto): Observable<Product> {
-    return this.httpClient.put<Product>(`${this.baseUrl}/product/delete/${id}`, updateProductDto).pipe(
+  updateProduct$(id: number, updateProductDto: ProductUpdateDto): Observable<Product> {
+    return this.httpClient.put<Product>(`${this.baseUrl}/product/update/${id}`, updateProductDto).pipe(
       tap(obj => console.log('updated product ' + JSON.stringify(obj))),
     );
   }

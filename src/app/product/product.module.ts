@@ -8,6 +8,8 @@ import { ProductEffects } from './state/product.effects';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductFormComponent } from './product-form/product-form.component';
+import { ProductUpdateComponent } from './product-update/product-update.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 /*const productsRoutes: Routes = [
@@ -18,12 +20,15 @@ import { ProductFormComponent } from './product-form/product-form.component';
   declarations: [
     ProductListComponent,
     ProductDetailsComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductUpdateComponent
   ],
   imports: [
     CommonModule,
     StoreModule.forFeature('products', productReducer),
     EffectsModule.forFeature([ProductEffects]),
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ProductModule { }

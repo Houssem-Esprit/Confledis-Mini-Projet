@@ -12,6 +12,7 @@ export interface ProductState {
     productsError: string,
     currentProductId: number;
     currentProduct: Product;
+    updateProductError: string;
 }
 
 const initialState: ProductState = {
@@ -19,6 +20,7 @@ const initialState: ProductState = {
     productsError: '',
     currentProductId: 0,
     currentProduct: null,
+    updateProductError: ''
 }
 
 
@@ -42,6 +44,12 @@ export const getCurrentProduct = createSelector(
     getDemandeInscriptionFeatureState,
     state => state.currentProduct,
 );
+
+export const getUpdateProductError = createSelector(
+    getDemandeInscriptionFeatureState,
+    state => state.updateProductError,
+);
+
 
 
 
@@ -71,6 +79,12 @@ export const productReducer = createReducer<ProductState>(
         return {
             ...state,
             currentProduct: action.product
+        }
+    }),
+    on(productActions.updateProductFailure, (state, action): ProductState => {
+        return {
+            ...state,
+            updateProductError: action.error
         }
     }),
 )

@@ -33,7 +33,12 @@ export const clearCurrentProductFailure = createAction(
 
 export const updateProduct = createAction(
     '[Product] Update Product',
-    props<{ id: string, updateProductDto: ProductUpdateDto }>()
+    props<{ id: number, updateProductDto: ProductUpdateDto }>()
+);
+
+export const updateProductFailure = createAction(
+    '[Product] Update Product Failure',
+    props<{ error: string }>()
 );
 
 export const initializeCurrentProduct = createAction(
