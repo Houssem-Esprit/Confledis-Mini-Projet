@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { ProductUpdateDto } from '../product-update.dto';
 import { Product } from '../product.model';
 
 export const getProducts = createAction(
@@ -21,7 +22,18 @@ export const setCurrentProduct = createAction(
 );
 
 export const clearCurrentProduct = createAction(
-    '[Product] Clear Current Product'
+    '[Product] Clear Current Product',
+    props<{ id: number }>()
+);
+
+export const clearCurrentProductFailure = createAction(
+    '[Product] Clear Current Product Failure',
+    props<{ error: string }>()
+);
+
+export const updateProduct = createAction(
+    '[Product] Update Product',
+    props<{ id: string, updateProductDto: ProductUpdateDto }>()
 );
 
 export const initializeCurrentProduct = createAction(

@@ -27,4 +27,19 @@ export class ProductEffects {
                     ))
         )
     });
+
+    deleteProduct$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(productActions.clearCurrentProduct),
+            switchMap(action =>
+                this.productService.deleteProduct$(action.id)
+                    .pipe(
+                        map(() => productActions.getProducts()),
+                        catchError(error => {
+                            console.log('error', error.error.message);
+                            return of(productActions.clearCurrentProductFailure({ error: error.error.message }))
+                        }),
+                    ))
+        )
+    });
 }
