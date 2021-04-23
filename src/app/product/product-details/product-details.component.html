@@ -1,0 +1,61 @@
+<div class="bg-white sm:px-6 overflow-hidden shadow-lg rounded-lg h-full w-full md:w-full cursor-pointer m-auto"
+    *ngIf="currentProduct$ | async as product; else elseBlock">
+    <a href="#" class="w-full block h-full">
+        <img alt="blog photo" src="assets/img_placeholder.png" class="max-h-64 w-full pt-4 object-cover" />
+        <div class="bg-white dark:bg-gray-800 w-full p-4 mb-4">
+            <p class="text-blue-900 text-md font-medium dark:text-yellow-500">
+                Article
+            </p>
+            <p class="text-gray-800 dark:text-white text-xl font-medium mb-2">
+                {{product.nom}}
+            </p>
+            <p class="text-gray-400 dark:text-gray-300 font-light text-md">
+                Une description pour remplire: (exemple) Bienvenue chez Confledis, Votre prestataire par excellence...
+            </p>
+            <div class="flex flex-1 items-center justify-between  w-full">
+                <div class="flex flex-wrap justify-starts items-center mt-4">
+                    <div class="text-xs mr-2 py-1.5 px-4 text-gray-600 bg-blue-100 rounded-2xl">
+                        Prix unitaire: {{ product.prixUnitaire  }} $
+                    </div>
+                    <div class="text-xs mr-2 py-1.5 px-4 text-gray-600 bg-blue-100 rounded-2xl">
+                        Quantité: {{ product.quantite  }} P
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap justify-starts items-center mt-4">
+
+                    <div class="bg-auto bg-center text-xs py-1.5">
+                        <button type="button"
+                            class="py-2 px-4 flex justify-center items-center  h-7  bg-green-600 hover:bg-green-700 focus:ring-green-500 focus:ring-offset-gray-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-500 dark:focus:ring-offset-gray-200">
+
+                            <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" class="mr-2" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                            </svg>
+                            Modifier
+                        </button>
+                    </div>
+                    <div class="text-xs mr-2 py-1.5 pl-4 ">
+                        <button type="button"
+                            class="py-2 px-4 flex justify-center items-center h-7 bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-gray-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-500 dark:focus:ring-offset-gray-200">
+
+                            <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" class="mr-2" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                            Supprimer
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </a>
+</div>
+<ng-template #elseBlock>
+    <div class="flex items-center justify-center w-full h-1/2 p-40">
+        <img class="w-full md:w-4/5 z-30" src="assets/no_product.svg" /> </div>
+</ng-template>

@@ -10,11 +10,15 @@ export interface State extends AppState.State {
 export interface ProductState {
     products: Product[],
     productsError: string,
+    currentProductId: number;
+    currentProduct: Product;
 }
 
 const initialState: ProductState = {
     products: [],
     productsError: '',
+    currentProductId: 0,
+    currentProduct: null,
 }
 
 
@@ -34,6 +38,10 @@ export const getProductsError = createSelector(
     state => state.productsError,
 );
 
+export const getCurrentProduct = createSelector(
+    getDemandeInscriptionFeatureState,
+    state => state.currentProduct,
+);
 
 
 
@@ -58,5 +66,11 @@ export const productReducer = createReducer<ProductState>(
             products: [],
             productsError: action.error,
         }
-    })
+    }),
+    on(productActions.setCurrentProduct, (state, action): ProductState => {
+        return {
+            ...state,
+            currentProduct: action.product
+        }
+    }),
 )

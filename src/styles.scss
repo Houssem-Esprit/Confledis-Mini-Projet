@@ -2,3 +2,7 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 /* You can add global styles to this file, and also import other style files */
+
+.productSelected {
+    @apply focus:outline-none focus:ring-4 focus:ring-yellow-900 focus:ring-inset focus:ring-opacity-50 focus:bg-blue-400 hover:bg-blue-100 dark:hover:bg-blue-400 active:bg-blue-100 dark:active:bg-blue-400;
+  }
