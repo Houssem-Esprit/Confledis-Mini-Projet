@@ -1,0 +1,50 @@
+<div
+    class="container flex flex-col mx-auto w-full items-center justify-center bg-white dark:bg-gray-800 rounded-lg shadow">
+    <div class="px-4 py-5 sm:px-6 border-b w-full">
+        <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white">
+            Notre produits
+        </h3>
+        <p class="mt-1 max-w-2xl text-sm text-gray-500 dark:text-gray-200">
+            Information detaillé de produits.
+        </p>
+    </div>
+    <ul class="flex-col  divide divide-y " *ngIf="products$ | async as products">
+        <li tabindex="-1"
+            class="flex flex-row w-full focus:outline-none focus:ring-4 focus:ring-yellow-300 focus:ring-inset focus:ring-opacity-50 focus:bg-blue-500 hover:bg-blue-300  "
+            *ngFor="let product of products">
+            <div class=" cursor-pointer flex flex-1 items-center p-4  ">
+                <div class="flex flex-col w-10 h-10 justify-center items-center mr-4">
+                    <a href="#" class="block relative">
+                        <img alt="profil" src="assets/product.svg"
+                            class="mx-auto object-cover rounded-full h-10 w-10 " />
+                    </a>
+                </div>
+                <div class="flex-1 pl-1 mr-16">
+                    <div class="font-medium dark:text-white">
+                        {{product.nom}}
+                    </div>
+                </div>
+
+                <div class="flex-1 pl-1 mr-16">
+                    <div class="font-medium dark:text-white">
+                        prix Unitaire: {{ product.prixUnitaire }} $
+                    </div>
+                    <div class="font-medium dark:text-white">
+                        quantité: {{ product.quantite }} P
+                    </div>
+                </div>
+
+                <button class="w-24 text-right flex justify-end focus:outline-none">
+                    <svg width="20" fill="currentColor" height="20"
+                        class="hover:text-gray-800 dark:hover:text-white dark:text-gray-200 text-gray-500"
+                        viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M1363 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+        </li>
+
+    </ul>
+</div>
