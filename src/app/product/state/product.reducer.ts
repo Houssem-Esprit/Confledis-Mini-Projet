@@ -13,6 +13,10 @@ export interface ProductState {
     currentProductId: number;
     currentProduct: Product;
     updateProductError: string;
+    addProductError: string;
+    showNewProduct: boolean;
+    showProductDeleted: boolean;
+
 }
 
 const initialState: ProductState = {
@@ -20,7 +24,10 @@ const initialState: ProductState = {
     productsError: '',
     currentProductId: 0,
     currentProduct: null,
-    updateProductError: ''
+    updateProductError: '',
+    addProductError: '',
+    showNewProduct: false,
+    showProductDeleted: false,
 }
 
 
@@ -50,6 +57,20 @@ export const getUpdateProductError = createSelector(
     state => state.updateProductError,
 );
 
+export const getAddProductError = createSelector(
+    getDemandeInscriptionFeatureState,
+    state => state.addProductError,
+);
+
+export const getShowNewProduct = createSelector(
+    getDemandeInscriptionFeatureState,
+    state => state.showNewProduct,
+);
+
+export const getShowProductDeleted = createSelector(
+    getDemandeInscriptionFeatureState,
+    state => state.showProductDeleted,
+);
 
 
 
@@ -78,7 +99,8 @@ export const productReducer = createReducer<ProductState>(
     on(productActions.setCurrentProduct, (state, action): ProductState => {
         return {
             ...state,
-            currentProduct: action.product
+            currentProduct: action.product,
+            //products: updateProducts(state, action),
         }
     }),
     on(productActions.updateProductFailure, (state, action): ProductState => {
@@ -87,4 +109,32 @@ export const productReducer = createReducer<ProductState>(
             updateProductError: action.error
         }
     }),
+    on(productActions.addProductSuccess, (state, action): ProductState => {
+        return {
+            ...state,
+            currentProduct: action.newProduct,
+            showNewProduct: true
+        }
+    }),
+    on(productActions.addProductFailure, (state, action): ProductState => {
+        return {
+            ...state,
+            addProductError: action.error
+        }
+    }),
+    on(productActions.clearCurrentProductSuccess, (state): ProductState => {
+        return {
+            ...state,
+            showProductDeleted: true,
+            currentProduct: null,
+        }
+    }),
+
 )
+
+let updateProducts = (state, action) => {
+    let index: number = state.products.indexOf(state.products.find(p => p.id === action.product.id));
+    return state.products[index] = action.product;
+}
+
+

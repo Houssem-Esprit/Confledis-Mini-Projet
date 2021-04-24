@@ -17,7 +17,10 @@ export class ProductListComponent implements OnInit {
   products$: Observable<Product[]>;
   productsError$: Observable<string>;
   selectedProduct$: Observable<Product>;
-  constructor(private store: Store<State>, private router: Router, private ngZone: NgZone) { }
+  constructor(private store: Store<State>, private router: Router, private ngZone: NgZone) {
+
+    this.router.navigate([{ outlets: { second: 'product' } }]);
+  }
 
   ngOnInit(): void {
     /**
@@ -40,6 +43,10 @@ export class ProductListComponent implements OnInit {
     console.log('[ProductListComponent] Product Selected');
     this.store.dispatch(productActions.setCurrentProduct({ product }));
     this.router.navigate([{ outlets: { second: 'product' } }]);
+  }
+
+  GoToAddProduct(): void {
+    this.router.navigate([{ outlets: { second: 'product/add' } }]);
   }
 
 }

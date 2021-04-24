@@ -1,5 +1,5 @@
 <div class="bg-white sm:px-6 overflow-hidden shadow-lg rounded-lg h-full w-full md:w-full cursor-pointer m-auto"
-    *ngIf="currentProduct$ | async as product; else elseBlock">
+    *ngIf="currentProduct$ | async as product">
     <a class="w-full block h-full">
         <img alt="blog photo" src="assets/img_placeholder.png" class="max-h-64 w-full pt-4 object-cover" />
         <div class="bg-white dark:bg-gray-800 w-full p-4 mb-4">
@@ -10,7 +10,8 @@
                 {{product.nom}}
             </p>
             <p class="text-gray-400 dark:text-gray-300 font-light text-md">
-                Une description pour remplire: (exemple) Bienvenue chez Confledis, Votre prestataire par excellence...
+                Une description pour remplire: (exemple) Bienvenue chez Confledis, Votre prestataire par
+                excellence...
             </p>
             <div class="flex flex-1 items-center justify-between  w-full">
                 <div class="flex flex-wrap justify-starts items-center mt-4">
@@ -57,7 +58,16 @@
         </div>
     </a>
 </div>
+
+<div class="flex items-center justify-center  w-full h-1/2 p-40" *ngIf="(showProductDeleted$ | async) ; else elseBlock">
+    <img class="w-full md:w-4/5 z-30" src="assets/deleted.svg" />
+</div>
+
+
 <ng-template #elseBlock>
+
     <div class="flex items-center justify-center w-full h-1/2 p-40">
-        <img class="w-full md:w-4/5 z-30" src="assets/no_product.svg" /> </div>
+        <img class="w-full md:w-4/5 z-30" src="assets/no_product.svg" />
+    </div>
+
 </ng-template>

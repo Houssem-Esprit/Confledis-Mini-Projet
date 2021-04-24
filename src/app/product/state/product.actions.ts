@@ -2,6 +2,10 @@ import { createAction, props } from '@ngrx/store';
 import { ProductUpdateDto } from '../product-update.dto';
 import { Product } from '../product.model';
 
+export interface ActionType {
+    getProducts
+}
+
 export const getProducts = createAction(
     '[Product] Get Products',
 );
@@ -26,6 +30,10 @@ export const clearCurrentProduct = createAction(
     props<{ id: number }>()
 );
 
+export const clearCurrentProductSuccess = createAction(
+    '[Product] Clear Current Product Success',
+);
+
 export const clearCurrentProductFailure = createAction(
     '[Product] Clear Current Product Failure',
     props<{ error: string }>()
@@ -36,11 +44,26 @@ export const updateProduct = createAction(
     props<{ id: number, updateProductDto: ProductUpdateDto }>()
 );
 
+export const updateProductSuccess = createAction(
+    '[Product] Update Product Success',
+);
+
 export const updateProductFailure = createAction(
     '[Product] Update Product Failure',
     props<{ error: string }>()
 );
 
-export const initializeCurrentProduct = createAction(
-    '[Product] Initialize Current Product'
+export const addProduct = createAction(
+    '[Product] Add Product ',
+    props<{ productUpdateDto: ProductUpdateDto }>()
+);
+
+export const addProductSuccess = createAction(
+    '[Product] Add Product Success',
+    props<{ newProduct: Product }>()
+);
+
+export const addProductFailure = createAction(
+    '[Product] Add Product Failure',
+    props<{ error: string }>()
 );

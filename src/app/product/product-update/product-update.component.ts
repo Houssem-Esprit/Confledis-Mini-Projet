@@ -37,9 +37,15 @@ export class ProductUpdateComponent implements OnInit {
   }
 
   onSubmit(originalProduct: Product): void {
-
+    let parseObj = (arg) => {
+      return {
+        nom: arg.nom,
+        prixUnintaire: parseInt(arg.prixUnitaire),
+        quantite: parseInt(arg.quantite)
+      }
+    }
     if (this.updateProductForm.valid && this.updateProductForm.dirty) {
-      const productBody: Product = { ...originalProduct, ...this.updateProductForm.value };
+      const productBody: Product = { ...originalProduct, ...parseObj(this.updateProductForm.value) };
       console.log('productBody: ', productBody);
 
       this.productUpdateDto = productBody;

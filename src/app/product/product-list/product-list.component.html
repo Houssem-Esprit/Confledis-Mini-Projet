@@ -12,8 +12,8 @@
         </div>
         <div class="pr-10">
             <button type="button"
-                class="py-2 px-4 flex justify-center items-center h-7 bg-blue-900 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-gray-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-500 dark:focus:ring-offset-gray-200">
-
+                class="py-2 px-4 flex justify-center items-center h-7 bg-blue-900 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-gray-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-500 dark:focus:ring-offset-gray-200"
+                (click)="GoToAddProduct()">
                 <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" class="mr-2" fill="none"
                     viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -28,7 +28,7 @@
         <li tabindex="-1"
             class="flex flex-row w-full focus:outline-none focus:ring-4 focus:ring-yellow-900 focus:ring-inset focus:ring-opacity-50 focus:bg-blue-400 hover:bg-blue-100 dark:hover:bg-blue-400 "
             *ngFor="let product of products"
-            [ngClass]="{'.productSelected':product?.id === (selectedProduct$ | async )?.id}">
+            [ngClass]="{'bg-blue-900':product?.id === (selectedProduct$ | async )?.id}">
             <div class=" cursor-pointer flex flex-1 items-center p-4 " (click)="productSelected(product)">
                 <div class="flex flex-col w-10 h-10 justify-center items-center mr-4">
                     <a href="#" class="block relative">

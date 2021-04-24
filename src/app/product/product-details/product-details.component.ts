@@ -16,12 +16,16 @@ import { Router } from '@angular/router';
 export class ProductDetailsComponent implements OnInit {
 
   currentProduct$: Observable<Product>;
+  showProductDeleted$: Observable<Boolean>;
+  showProductNotFound$: Observable<Boolean>;
 
   constructor(private store: Store<State>, private router: Router) { }
 
   ngOnInit(): void {
 
     this.currentProduct$ = this.store.select(fromProduct.getCurrentProduct);
+
+    this.showProductDeleted$ = this.store.select(fromProduct.getShowProductDeleted);
   }
 
 

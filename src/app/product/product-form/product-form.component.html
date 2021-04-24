@@ -1,53 +1,86 @@
-<div class="bg-white rounded-lg shadow sm:max-w-md sm:w-full sm:mx-auto sm:overflow-hidden">
+<div
+    class="bg-white w-full h-full  rounded-lg shadow sm:w-full sm:w-full sm:mx-auto sm:overflow-hidden dark:bg-gray-800">
     <div class="px-4 py-8 sm:px-10">
         <div class="relative mt-6">
             <div class="absolute inset-0 flex items-center">
                 <div class="w-full border-t border-gray-300">
                 </div>
             </div>
-            <div class="relative flex justify-center text-sm leading-5">
-                <span class="px-2 text-gray-500 bg-white">
-                    Search criteria
+            <div class="relative flex justify-center text-lg leading-5">
+                <span class="px-2 text-gray-500 bg-white dark:bg-gray-800 dark:text-white">
+                    Formulaire d'ajout
                 </span>
             </div>
         </div>
+
         <div class="mt-6">
-            <div class="w-full space-y-6">
-                <div class="w-full">
-                    <div class=" relative ">
-                        <input type="text" id="search-form-price"
-                            class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                            placeholder="Your price" />
+            <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()">
+                <fieldset>
+                    <div class="w-full space-y-6">
+
+
+                        <div class="w-full">
+                            <div class=" relative ">
+                                <input type="text" id="nom" formControlName="nom"
+                                    class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-900 dark:focus:ring-blue-900 focus:border-transparent"
+                                    [ngClass]="{'ring-red-600': displayMessage.nom }" placeholder="Nom produit"
+                                    (blur)="blur()" />
+                                <span class="text-red-600" *ngIf="displayMessage.nom">
+                                    {{displayMessage.nom}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="w-full">
+                            <div class=" relative ">
+                                <input type="text" id="prixUnitaire" formControlName="prixUnitaire"
+                                    class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-900 dark:focus:ring-yellow-600 focus:border-transparent"
+                                    [ngClass]="{'ring-red-600': displayMessage.prixUnitaire }"
+                                    placeholder="Prix unitaire" (blur)="blur()" />
+                                <span class="text-red-600" *ngIf="displayMessage.prixUnitaire">
+                                    {{displayMessage.prixUnitaire}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="w-full">
+                            <div class=" relative ">
+                                <input type="text" id="quantite" formControlName="quantite"
+                                    class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-900 dark:focus:ring-yellow-600 focus:border-transparent"
+                                    [ngClass]="{'ring-red-600': displayMessage.quantite }" placeholder="Quantité"
+                                    (blur)="blur()" />
+                                <span class="text-red-600" *ngIf="displayMessage.quantite">
+                                    {{displayMessage.quantite}}
+                                </span>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="block w-full rounded-md shadow-sm">
+                                <button type="submit"
+                                    class="py-2 px-4  bg-blue-900 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-500 dark:focus:ring-offset-gray-200"
+                                    [disabled]="!addProductForm.valid || !addProductForm.dirty">
+                                    Ajouter
+                                </button>
+                            </span>
+                        </div>
+
                     </div>
-                </div>
-                <div class="w-full">
-                    <div class=" relative ">
-                        <input type="text" id="search-form-location"
-                            class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                            placeholder="Your location" />
-                    </div>
-                </div>
-                <div class="w-full">
-                    <div class=" relative ">
-                        <input type="text" id="search-form-name"
-                            class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                            placeholder="Your name" />
-                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="px-4 py-6 border-t-2 border-gray-200 bg-gray-50 sm:px-10" *ngIf="addProductError$ | async as error">
+        <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
+            <div class="flex">
+                <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <path
+                            d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" />
+                    </svg>
                 </div>
                 <div>
-                    <span class="block w-full rounded-md shadow-sm">
-                        <button type="button"
-                            class="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
-                            Search
-                        </button>
-                    </span>
+                    <p class="font-bold">Echec de l'operation </p>
+                    <p class="text-sm">{{error}}.</p>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="px-4 py-6 border-t-2 border-gray-200 bg-gray-50 sm:px-10">
-        <p class="text-xs leading-5 text-gray-500">
-            This data are display for information and can change
-        </p>
     </div>
 </div>

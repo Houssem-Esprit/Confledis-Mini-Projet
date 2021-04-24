@@ -29,4 +29,11 @@ export class ProductService {
       tap(obj => console.log('updated product ' + JSON.stringify(obj))),
     );
   }
+
+
+  AddProduct$(updateProductDto: ProductUpdateDto): Observable<Product> {
+    return this.httpClient.post<Product>(`${this.baseUrl}/product/addProduct`, updateProductDto).pipe(
+      tap(obj => console.log('the new product ' + JSON.stringify(obj))),
+    );
+  }
 }
