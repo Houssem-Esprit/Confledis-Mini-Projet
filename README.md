@@ -56,7 +56,7 @@ npm run start
 
 
 <img src = "Captures/bienvenu.png" /> <img src = "Captures/add_product-bad_form.png"  />
-<img src = "Captures/add_product-bad_request.png" /> <img src = "Captures/product_selected"  />
+<img src = "Captures/add_product-bad_request.png" /> <img src = "Captures/product_selected.png"  />
 <img src = "Captures/update_product.png"  /> <img src = "Captures/Product_updated.png"  />
 <img src = "Captures/delete_product.png"  /> <img src = "Captures/product_deleted.png"  />
 <img src = "Captures/find_product.png"  /> <img src = "Captures/product_not-found.png"  />
