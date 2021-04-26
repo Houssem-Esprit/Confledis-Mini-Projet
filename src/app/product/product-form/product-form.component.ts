@@ -17,7 +17,6 @@ import { Router } from '@angular/router';
 })
 export class ProductFormComponent implements OnInit {
   addProductError$: Observable<string>;
-  formError: string;
   displayMessage: { [key: string]: string } = {};
   private validationMessages: { [key: string]: { [key: string]: string } };
   addProductForm: FormGroup;

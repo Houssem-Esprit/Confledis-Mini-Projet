@@ -14,7 +14,9 @@ export class AppComponent implements OnInit {
   title = 'Confledis-miniProjet-web';
   @Input() searchText: string;
 
-  constructor(private store: Store<State>) { }
+  constructor(private store: Store<State>) {
+    localStorage.theme = 'light';
+  }
 
   ngOnInit(): void {
   }
@@ -27,14 +29,15 @@ export class AppComponent implements OnInit {
 
 
   onToggle(): void {
-    localStorage.theme = localStorage.theme == 'dark' ? 'light' : 'dark';
+    localStorage.theme = localStorage.theme === 'dark' ? 'light' : 'dark';
     console.log('working : ', localStorage.theme);
 
     if (localStorage.theme === 'dark') {
       console.log('in dark case')
-      document.documentElement.classList.add('dark')
+      document.documentElement.classList.add('dark');
     } else {
-      document.documentElement.classList.remove('dark')
+      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
     }
   }
 

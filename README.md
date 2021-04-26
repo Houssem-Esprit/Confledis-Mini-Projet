@@ -1,27 +1,54 @@
-# ConfledisMiniProjetWeb
+<link rel="stylesheet" href="index.css"><header class="container">
+  <h1>Confledis -Mini projet-</h1>
+</header>
+<body class = "secContainer">
+Angular web app demonstrate the creation of a product CRUD operations.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.2.
+## Technologies
+* Angular (Version 11)
+* NgRx library (Version 11)
+* Tailwind CSS (Version 2.0)
+* Redux design pattern
+* ++ Backend Server ++
+  * Nest js
+> Find the backend server [here](https://github.com/Houssem-Esprit/Confledis_miniProjet_server).
 
-## Development server
+## Get Started
+Download or clone the project:
+```bash
+https://github.com/Houssem-Esprit/Confledis_miniProjet.git
+```
+Install the required packages:
+```bash
+npm install --save or globally install: npm install -g --save
+```
+Run the Angular app:
+```bash
+npm run start
+```
+> Feel free to change the local port in: package.json
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+++ Backend ++
 
-## Code scaffolding
+> Make sure to download the backend server [here](https://github.com/Houssem-Esprit/Confledis_miniProjet_server).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+npm install --save 
+```
+Run the server app:
+```bash
+npm run start
+```
 
-## Build
+## Screenshot
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+<img src = "Captures/bienvenu.png" /> <img src = "Captures/add_product-bad_form.png"  />
+<img src = "Captures/add_product-bad_request.png" /> <img src = "Captures/product_selected"  />
+<img src = "Captures/update_product.png"  /> <img src = "Captures/Product_updated.png"  />
+<img src = "Captures/delete_product.png"  /> <img src = "Captures/product_deleted.png"  />
+<img src = "Captures/find_product.png"  /> <img src = "Captures/product_not-found.png"  />
+<img src = "Captures/dark_mode-1.png"  /> <img src = "Captures/dark_mode-2.png"  />
+<img src = "Captures/dark_mode-3.png"  /> <img src = "Captures/dark_mode-4.png"  />
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+</body>

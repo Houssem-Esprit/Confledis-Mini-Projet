@@ -132,6 +132,7 @@ export const productReducer = createReducer<ProductState>(
         return {
             ...state,
             currentProduct: action.product,
+            showProductDeleted: false,
             //products: updateProducts(state, action),
         }
     }),
@@ -179,6 +180,7 @@ export const productReducer = createReducer<ProductState>(
             ...state,
             searchTextInit: true,
             currentProduct: null,
+            showProductDeleted: false,
         }
     }),
     on(productActions.SearchDone, (state): ProductState => {
@@ -186,6 +188,12 @@ export const productReducer = createReducer<ProductState>(
             ...state,
             searchTextFailed: false,
             searchTextInit: false,
+        }
+    }),
+    on(productActions.clearSelectedProduct, (state): ProductState => {
+        return {
+            ...state,
+            currentProduct: null,
         }
     }),
 

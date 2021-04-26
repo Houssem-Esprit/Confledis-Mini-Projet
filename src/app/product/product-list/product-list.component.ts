@@ -49,6 +49,7 @@ export class ProductListComponent implements OnInit {
   }
 
   GoToAddProduct(): void {
+    this.store.dispatch(productActions.clearSelectedProduct());
     this.router.navigate([{ outlets: { second: 'product/add' } }]);
   }
 

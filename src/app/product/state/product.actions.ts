@@ -85,3 +85,7 @@ export const SearchInit = createAction(
 export const SearchDone = createAction(
     '[Product]  Search Done',
 );
+
+export const clearSelectedProduct = createAction(
+    '[Product]  Clear Selected Product',
+);
