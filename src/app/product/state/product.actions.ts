@@ -67,3 +67,21 @@ export const addProductFailure = createAction(
     '[Product] Add Product Failure',
     props<{ error: string }>()
 );
+
+
+export const setSearchedText = createAction(
+    '[Product] Set Searched Text',
+    props<{ searchText: string }>()
+);
+
+export const SearchedTextFailed = createAction(
+    '[Product]  Searched Text Failed',
+);
+
+export const SearchInit = createAction(
+    '[Product]  Search Initialized',
+);
+
+export const SearchDone = createAction(
+    '[Product]  Search Done',
+);

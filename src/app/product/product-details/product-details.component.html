@@ -1,5 +1,5 @@
 <div class="bg-white sm:px-6 overflow-hidden shadow-lg rounded-lg h-full w-full md:w-full cursor-pointer m-auto"
-    *ngIf="currentProduct$ | async as product">
+    *ngIf="currentProduct$ | async as product; else second">
     <a class="w-full block h-full">
         <img alt="blog photo" src="assets/img_placeholder.png" class="max-h-64 w-full pt-4 object-cover" />
         <div class="bg-white dark:bg-gray-800 w-full p-4 mb-4">
@@ -59,14 +59,38 @@
     </a>
 </div>
 
-<div class="flex items-center justify-center  w-full h-1/2 p-40" *ngIf="(showProductDeleted$ | async) ; else elseBlock">
-    <img class="w-full md:w-4/5 z-30" src="assets/deleted.svg" />
-</div>
+<ng-template #second>
+
+    <div class="flex items-center justify-center  w-full h-1/2 p-40"
+        *ngIf="(showProductDeleted$ | async) ; else ProductDeletedElseBlock">
+        <img class="w-full md:w-4/5 z-30" src="assets/deleted.svg" />
+    </div>
+
+</ng-template>
 
 
-<ng-template #elseBlock>
+<ng-template #ProductDeletedElseBlock>
 
-    <div class="flex items-center justify-center w-full h-1/2 p-40">
+    <div class="flex items-center justify-center w-full h-1/2 p-40"
+        *ngIf="(showProductNotFound$ | async) ; else ProductNotFoundElseBlock">
+        <img class="w-full md:w-4/5 z-30" src="assets/not_found.svg" />
+    </div>
+
+</ng-template>
+
+
+<ng-template #ProductNotFoundElseBlock>
+
+    <div class="flex items-center justify-center w-full h-1/2 p-40"
+        *ngIf="(showSearchInit$ | async) ; else SearchIniElseBlock">
+        <img class="w-full md:w-4/5 z-30" src="assets/searching.svg" />
+    </div>
+
+</ng-template>
+
+<ng-template #SearchIniElseBlock>
+
+    <div class="flex items-center justify-center w-full h-1/2 p-40" *ngIf="(showSearchDone$ | async)">
         <img class="w-full md:w-4/5 z-30" src="assets/no_product.svg" />
     </div>
 

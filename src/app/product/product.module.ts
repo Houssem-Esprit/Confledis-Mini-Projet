@@ -10,6 +10,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { ProductUpdateComponent } from './product-update/product-update.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilterPipe } from './pipes/filter.pipe';
+import { HighlightDirective } from './directives/highlight.directive';
 
 
 /*const productsRoutes: Routes = [
@@ -21,14 +23,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProductListComponent,
     ProductDetailsComponent,
     ProductFormComponent,
-    ProductUpdateComponent
+    ProductUpdateComponent,
+    FilterPipe,
+    HighlightDirective,
   ],
   imports: [
     CommonModule,
     StoreModule.forFeature('products', productReducer),
     EffectsModule.forFeature([ProductEffects]),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
   ]
 })
 export class ProductModule { }

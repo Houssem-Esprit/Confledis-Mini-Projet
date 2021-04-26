@@ -14,10 +14,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./product-details.component.scss']
 })
 export class ProductDetailsComponent implements OnInit {
-
   currentProduct$: Observable<Product>;
   showProductDeleted$: Observable<Boolean>;
   showProductNotFound$: Observable<Boolean>;
+  showSearchInit$: Observable<Boolean>;
+  showSearchDone$: Observable<Boolean>;
+
 
   constructor(private store: Store<State>, private router: Router) { }
 
@@ -26,6 +28,12 @@ export class ProductDetailsComponent implements OnInit {
     this.currentProduct$ = this.store.select(fromProduct.getCurrentProduct);
 
     this.showProductDeleted$ = this.store.select(fromProduct.getShowProductDeleted);
+
+    this.showProductNotFound$ = this.store.select(fromProduct.getSearchedTextFailed);
+
+    this.showSearchInit$ = this.store.select(fromProduct.getSearchInit);
+
+    this.showSearchDone$ = this.store.select(fromProduct.getSearchDone);
   }
 
 

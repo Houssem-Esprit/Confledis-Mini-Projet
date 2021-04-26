@@ -25,28 +25,36 @@
     </div>
 
     <ul class="flex-col  divide divide-y " *ngIf="products$ | async as products">
-        <li tabindex="-1"
+        <li tabindex="-1" id="row"
             class="flex flex-row w-full focus:outline-none focus:ring-4 focus:ring-yellow-900 focus:ring-inset focus:ring-opacity-50 focus:bg-blue-400 hover:bg-blue-100 dark:hover:bg-blue-400 "
-            *ngFor="let product of products"
-            [ngClass]="{'bg-blue-900':product?.id === (selectedProduct$ | async )?.id}">
+            *ngFor="let product of products | appFilter: (searchText$ | async)"
+            [ngClass]="{'bg-blue-900':product?.id === (selectedProduct$ | async )?.id}" appRow [rowOfProduct]="row"
+            [setRowTitle]="'true'" [rows]="products">
             <div class=" cursor-pointer flex flex-1 items-center p-4 " (click)="productSelected(product)">
-                <div class="flex flex-col w-10 h-10 justify-center items-center mr-4">
-                    <a href="#" class="block relative">
-                        <img alt="profil" src="assets/product.svg"
-                            class="mx-auto object-cover rounded-full h-10 w-10 " />
-                    </a>
-                </div>
-                <div class="flex-1 pl-1 mr-16">
-                    <div class="font-medium dark:text-white">
-                        {{product.nom}}
+                <div class="cursor-pointer flex flex-1 items-center  ">
+                    <div class="flex flex-col w-10 h-10 justify-center items-center mr-4">
+                        <a href="#" class="block relative">
+                            <img alt="profil" src="assets/product.svg"
+                                class="mx-auto object-cover rounded-full h-10 w-10 " />
+                        </a>
+                    </div>
+                    <div class="flex-1 pl-1 mr-16  ">
+                        <div class="font-medium dark:text-white"
+                            [ngClass]="{'text-white':product?.id === (selectedProduct$ | async )?.id}" appHighlight
+                            [searchedWord]="searchText$ | async" [content]="product.nom"
+                            [classToApply]="'font-bold text-yellow-600'" [setTitle]="'true'">
+                            {{product.nom}}
+                        </div>
                     </div>
                 </div>
 
                 <div class="flex-1 pl-1 mr-16">
-                    <div class="font-medium dark:text-white">
+                    <div class="font-medium dark:text-white"
+                        [ngClass]="{'text-white':product?.id === (selectedProduct$ | async )?.id}">
                         prix Unitaire: {{ product.prixUnitaire }} $
                     </div>
-                    <div class="font-medium dark:text-white">
+                    <div class="font-medium dark:text-white"
+                        [ngClass]="{'text-white':product?.id === (selectedProduct$ | async )?.id}">
                         quantité: {{ product.quantite }} P
                     </div>
                 </div>

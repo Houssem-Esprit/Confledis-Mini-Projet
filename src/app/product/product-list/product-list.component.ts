@@ -17,6 +17,8 @@ export class ProductListComponent implements OnInit {
   products$: Observable<Product[]>;
   productsError$: Observable<string>;
   selectedProduct$: Observable<Product>;
+  searchText$: Observable<string>;
+
   constructor(private store: Store<State>, private router: Router, private ngZone: NgZone) {
 
     this.router.navigate([{ outlets: { second: 'product' } }]);
@@ -27,6 +29,7 @@ export class ProductListComponent implements OnInit {
      * dispatch actions
      */
     this.store.dispatch(productActions.getProducts());
+    this.searchText$ = this.store.select(fromProduct.getSearchedText);
 
 
     /**

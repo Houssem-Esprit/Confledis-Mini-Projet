@@ -16,6 +16,9 @@ export interface ProductState {
     addProductError: string;
     showNewProduct: boolean;
     showProductDeleted: boolean;
+    searchText: string;
+    searchTextFailed: boolean;
+    searchTextInit: boolean;
 
 }
 
@@ -28,6 +31,10 @@ const initialState: ProductState = {
     addProductError: '',
     showNewProduct: false,
     showProductDeleted: false,
+    searchText: '',
+    searchTextFailed: false,
+    searchTextInit: false
+
 }
 
 
@@ -73,8 +80,33 @@ export const getShowProductDeleted = createSelector(
 );
 
 
+export const getSearchedText = createSelector(
+    getDemandeInscriptionFeatureState,
+    state => state.searchText,
+);
 
+export const getSearchedTextFailed = createSelector(
+    getDemandeInscriptionFeatureState,
+    state => state.searchTextFailed,
+);
 
+export const getSearchInit = createSelector(
+    getDemandeInscriptionFeatureState,
+    state => state.searchTextInit,
+);
+
+export const getSearchDone = createSelector(
+    getDemandeInscriptionFeatureState,
+    getSearchedTextFailed,
+    getSearchInit,
+    (t, searchFailed: boolean, searchInit: boolean) => {
+        if ((searchFailed == false) && (searchInit == false)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+);
 
 
 
@@ -129,6 +161,35 @@ export const productReducer = createReducer<ProductState>(
             currentProduct: null,
         }
     }),
+
+    on(productActions.setSearchedText, (state, action): ProductState => {
+        return {
+            ...state,
+            searchText: action.searchText
+        }
+    }),
+    on(productActions.SearchedTextFailed, (state): ProductState => {
+        return {
+            ...state,
+            searchTextFailed: true
+        }
+    }),
+    on(productActions.SearchInit, (state): ProductState => {
+        return {
+            ...state,
+            searchTextInit: true,
+            currentProduct: null,
+        }
+    }),
+    on(productActions.SearchDone, (state): ProductState => {
+        return {
+            ...state,
+            searchTextFailed: false,
+            searchTextInit: false,
+        }
+    }),
+
+
 
 )
 
