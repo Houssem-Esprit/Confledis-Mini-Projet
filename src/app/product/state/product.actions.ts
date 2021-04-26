@@ -89,3 +89,7 @@ export const SearchDone = createAction(
 export const clearSelectedProduct = createAction(
     '[Product]  Clear Selected Product',
 );
+
+export const clearNewProduct = createAction(
+    '[Product]  Clear New Product',
+);

@@ -196,6 +196,12 @@ export const productReducer = createReducer<ProductState>(
             currentProduct: null,
         }
     }),
+    on(productActions.clearNewProduct, (state): ProductState => {
+        return {
+            ...state,
+            showNewProduct: false,
+        }
+    }),
 
 
 

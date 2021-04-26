@@ -21,7 +21,9 @@ export class ProductDetailsComponent implements OnInit {
   showSearchDone$: Observable<Boolean>;
 
 
-  constructor(private store: Store<State>, private router: Router) { }
+  constructor(private store: Store<State>, private router: Router) {
+    this.store.dispatch(ProductActions.clearNewProduct());
+  }
 
   ngOnInit(): void {
 
