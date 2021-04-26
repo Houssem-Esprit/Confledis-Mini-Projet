@@ -41,7 +41,7 @@ http://localhost:4200
 ```bash
 npm install --save 
 ```
-Cinfig Database:
+Config Database:
 *  Install [WAMP](https://www.wampserver.com/) or [XAMPP](https://www.apachefriends.org/fr/index.html)
 *  Run your database environment (wamp/xampp)
 *  Access your phpMyAdmin workspace
