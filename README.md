@@ -9,8 +9,10 @@ Angular web app demonstrate the creation of a product CRUD operations.
 * NgRx library (Version 11)
 * Tailwind CSS (Version 2.0)
 * Redux design pattern
+
 * ++ Backend Server ++
   * Nest js
+  * MySQL
 > Find the backend server [here](https://github.com/Houssem-Esprit/Confledis_miniProjet_server).
 
 ## Get Started
@@ -26,7 +28,11 @@ Run the Angular app:
 ```bash
 npm run start
 ```
-> Feel free to change the local port in: package.json
+The app will be available on:
+```bash
+http://localhost:4200
+```
+> Feel free to change the default port (4200) in: package.json
 
 ++ Backend ++
 
@@ -35,6 +41,12 @@ npm run start
 ```bash
 npm install --save 
 ```
+Cinfig Database:
+*  Install [WAMP](https://www.wampserver.com/) or [XAMPP](https://www.apachefriends.org/fr/index.html)
+*  Run your database environment (wamp/xampp)
+*  Access your phpMyAdmin workspace
+*  Create a new database with name [confledis](https://github.com/Houssem-Esprit/Confledis_miniProjet)
+
 Run the server app:
 ```bash
 npm run start
