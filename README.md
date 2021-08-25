@@ -2,7 +2,7 @@
   <h1>Confledis -Mini projet-</h1>
 </header>
 <body class = "secContainer">
-Angular web app demonstrate the creation of a product CRUD operations.
+Angular app demonstrates a product CRUD.
 
 ## Technologies
 * Angular (Version 11)
